@@ -1,0 +1,64 @@
+/* Custom Stylesheet */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+input[type=text]:focus {
+    border-bottom: 1px solid #1e88e5;
+    color: #1e88e5;
+}
+
+.input-field label, .input-field label.active {
+    color: #1e88e5;
+}
+
+p.small {
+    font-size: 0.8em;
+}
+
+.hidden {
+    display: none;
+}
+
+.progress {
+    position:absolute;
+    top:-8px;
+    right:0;
+    z-index: 1000;
+}
+
+.click {
+    cursor: pointer;
+}
+
+/* pay invoice */
+#user-greeting {
+    margin: 0 0 30px 0;
+}
+
+#logout {
+    position: relative;
+    top: 2px;
+}
+
+#user-login {
+    margin: 0 0 30px 0;
+}
+
+.drag-over {
+    color: green;
+    
+    position:absolute;
+    top:10px;
+    left:10px;
+    z-index: 10;
+}
+
+.drag-over .col {
+    margin-top: 10%;
+    opacity: 1 !important;
+}
