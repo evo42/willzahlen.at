@@ -1,6 +1,6 @@
 var Number26 = function (options) {
   var bearer = 'YW5kcm9pZDpzZWNyZXQ=';
-  var api = 'https://api.tech26.de';
+  var api = '/proxy.php?url=https://api.tech26.de';
   // var promises = [];
   var N26 = {};
   N26.login = function () {
@@ -207,7 +207,7 @@ function checkStatus() {
   var confirmed = false;
 
   function isConfirmed() {
-    var api = 'https://api.tech26.de';
+    var api = '/proxy.php?url=https://api.tech26.de';
     var bearer = localStorage.getItem('N26token');
     var transId = localStorage.getItem('N26transId');
     $('#payment-confirmed').hide();
@@ -228,6 +228,9 @@ function checkStatus() {
           favicon.badge(-1);
 
           if (trans.userCertified) {
+
+            notificationTransaktionConfirmed(trans);
+
             $('#payment-approve').fadeOut();
             $('#payment-confirmed').fadeIn();
             $('#payment-declined').hide();
