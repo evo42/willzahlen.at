@@ -229,7 +229,7 @@ function checkStatus() {
 
           if (trans.userCertified) {
 
-            notificationTransaktionConfirmed(trans);
+            /* notificationTransaktionConfirmed(trans); */
 
             $('#payment-approve').fadeOut();
             $('#payment-confirmed').fadeIn();
