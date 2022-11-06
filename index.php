@@ -1,49 +1,73 @@
 <?php
-require_once 'app/config.php';
+require_once './app/config.php';
 
 if (!isset($tld)) {
-    die('config required');
+    die('¯\_(ツ)_/¯');
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Rechnung zahlen. Nicht abtippen.</title>
+  <title>Rechnung@BANKpay.plus payzahlen — nicht abtippen — BANKpay+</title>
 
-  <!-- CSS  -->
+  <!-- CSS -- ATTENTION: do wean Google™ APIs und FONTS g'used. -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <!-- structured meta-data -->
+  <meta property="og:title" content="Mit BANKpay+ bezahlen." >
+  <meta property="og:description" content="Einfach sicher via Online Banking einkaufen.">
+  <meta property="og:image" itemprop="image" content="https://dummyimage.com/1200x1200/ffffff/000000.png%26text=BANKpay+">
+  <meta property="og:image:secure_url" itemprop="image" content="https://dummyimage.com/1200x1200/ffffff/000000.png%26text=BANKpay+">
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -- DSGVO or so : /
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Rubik+Microbe&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> -->
+  <link href="http://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+  <link href="http://fonts.cdnfonts.com/css/nunito" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/flag-icons.min.css">
+
+  <!-- 3rd party -- DSGVO or so : / -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/a8334b3968.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- mostly hidden UI / UX elements -->
   <div class="progress hidden">
       <div class="indeterminate"></div>
   </div>
-
   <div class="drag-over hidden">
       <div class="row">
         <div class="col s12 center">
             <h4><i class="center large mdi-navigation-check"></i></h4>
-            <p class="center-align bold">Drop!</p>
+            <p class="center-align bold">Drop. Rechnung bitte!</p>
         </div>
       </div>
   </div>
 
+  <!-- BANKpay+ information + sign-up -->
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
-      <h1 class="header center blue-text">rechnung&#8203;@<?php echo $tld ?></h1>
       <div class="row center">
-          <h5 class="header col s12 light">Rechnung&nbsp;zahlen. Nicht&nbsp;abtippen. Einfach&nbsp;weiterleiten.</h5>
+          <h5 class="header col s12 light">Rechnung&nbsp;<em>payzahlen</em> — nicht&nbsp;abtippen — einfach&nbsp;weiterleiten:</h5>
       </div>
+      <h1 class="header center blue-text">rechnung&#8203;@<?php echo $tld ?></h1>
       <div id="invite-ok" class="row center hidden green-text">
-          <p>Schau' in dein E-Mail Postfach &mdash; deine Number26 Einladung und die Rechnung zum testen ist unterwegs.</p>
+          <p>Schau' in dein E-Mail Postfach &mdash; deine BANKpay+ Einladung und eine Rechnung zum testen sind unterwegs.</p>
       </div>
       <div id="invite-error" class="row center hidden red-text">
-          <p>Fehler: Ist deine E-Mail Adresse gültig?</p>
+          <p>Achtung: Ist deine E-Mail Adresse gültig?</p>
       </div>
       <div id="invite-form" class="row center">
           <div class="input-field col l2 m1 s1">
@@ -53,47 +77,31 @@ if (!isset($tld)) {
             <input id="invite" type="text" class="validate">
             <label for="invite">Deine E-Mail Adresse</label>
           </div>
-          
-          
           <div class="input-field col l4 m5 s10">
-              <a href="#" id="invite-button" class="btn-large waves-effect waves-light blue">€ 10 Startguthaben</a>
+              <a href="#" id="invite-button" class="btn-large waves-effect waves-light blue">BANKpay+ nutzen</a>
          </div>
-         
+
       </div>
       <div id="invite-info" class="row center">
-          <p class="small">Du bekommst ein kostenloses Number26 Konto mit € 10 Guthaben und ein E-Mail mit einer Rechnung zum testen.</p>
+          <p class="small">Du bekommst ein kostenloses BANKpay+ karte.digital Konto zum einfach sicheren bezahlen mit SEPA Instant und Open Banking.</p>
       </div>
     </div>
   </div>
-
 
   <div class="container">
     <div class="section">
 
       <!--   Icon Section   -->
       <div class="row">
-        <div class="col s12 m4">
+      <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">timer</i></h2>
-            <h5 class="center">Zeit sparen.</h5>
-
-            <p class="light center">
-                Suchen und abtippen von Rechnungs&shy;daten nervt.<br />
-                Kein Online-Banking Formular.<br />
-                Einfach. Zeit sparen.<br />
-            </p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-              <!-- inbox | send | insert_drive_file | check -->
-            <h2 class="center light-blue-text"><i class="material-icons">email</i></h2>
+            <h2 class="center light-blue-text"><i class="material-icons">document_scanner</i></h2>
             <h5 class="center">PDF senden.</h5>
 
             <p class="light center">
-                Rechnungen kommen immer öfter als PDF Dokument per E-Mail an.<br />
-                E-Mail an rechnung@<?php echo $tld ?> weiterleiten. Fertig.
+                Rechnungen per E-Mail / PDF Dokument erhalten?<br />
+                <em><a href="mailto:rechnung@<?php echo $tld ?>?subject=Rechnung weiterleiten und via Link in der Auto-Antwort einfach sicher bezahlen">rechnung@<?php echo $tld ?></a></em><br />
+                <strong>Einfach weiterleiten. Fertig.</strong>
             </p>
           </div>
         </div>
@@ -104,24 +112,32 @@ if (!isset($tld)) {
             <h5 class="center">Einfach zahlen.</h5>
 
             <p class="light center">
-                Modernstes Online Banking.<br />
-                Rechnungsdaten kontrollieren und Zahlung freigeben.<br />
-                Sicher und einfach zahlen.
+                Mit deiner Bank bezahlen.<br />
+                Rechnung kontrollieren &amp; Zahlung freigeben.<br />
+                <strong>Einfach payzahlen. Sicher.</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">favorite</i></h2>
+            <h5 class="center">Zeit sparen.</h5>
+
+            <p class="light center">
+                Suchen und abtippen von Rechnungs&shy;daten nervt.<br />
+                Ohne mBanking Formular.<br />
+                <strong>Einfach erledigt. Sofort.</strong><br />
             </p>
           </div>
         </div>
       </div>
-
     </div>
-    
-    <div class="row center">
-        <a href="https://number26.de/kosten/" target="_blank"><img src="img/online_banking_icon.png" /></a>
-    </div>
-    
-    <br><br>
 
     <div class="section">
-
+      <div class="row center">
+          <a href="https://BANKpay.plus" title="BANKpay+ Instant SEPA Wallet"><img src="img/bankpay.plus-logo.png" alt="BANKpay+ Logo - black simple font on white background." /></a>
+      </div>
     </div>
   </div>
 
@@ -131,10 +147,10 @@ if (!isset($tld)) {
         <div class="col l12 m12 s12">
           <h5 class="white-text">Wie funktioniert das?</h5>
           <p class="grey-text text-lighten-4">
-            Nutze dein kostenloses <a target="_blank" href="https://number26.de/sicheres-online-mobile-banking/">Number26 Konto</a> zum einfachen und sicheren bezahlen von Rechnungen. Nie mehr abtippen.
+            Nutze am besten dein <a target="_blank" href="https://bunq.eu">bunq Konto</a> zum einfachen und sicheren bezahlen von Rechnungen. Nie mehr abtippen.<br /> Jedes bestehende IBAN Konto kann benutzt werden.
           </p>
           <p class="grey-text text-lighten-4">
-            Rechnung im PDF Format an <a href="mailto:rechnung@<?php echo $tld ?>">rechnung@<?php echo $tld ?></a> senden. Die Rechnungsdaten werden von <a target="_blank" href="https://gini.net">Gini</a> &mdash; wie von Geisterhand &mdash; erkannt &amp; du bekommst umgehend eine Antwort-Email an deine Absenderadresse mit einem Link zum bezahlen mit deinem Number26 Konto. Kein lästiges Online Banking Formular ausfüllen. Nie wieder!
+            Rechnung im PDF Format an <a href="mailto:rechnung@<?php echo $tld ?>">rechnung@<?php echo $tld ?></a> senden. Die Rechnungsdaten werden von <a target="_blank" href="https://gini.net">Gini</a> &mdash; wie von Geisterhand &mdash; erkannt &amp; du bekommst umgehend eine Antwort-Email an deine Absenderadresse mit einem Link zum bezahlen mit deinem IBAN Konto. Kein lästiges Online Banking Formular ausfüllen. Nie wieder!
           </p>
           <p class="grey-text text-lighten-4">
             Kontrolliere mit einem Blick, ob Gini alles richtig erkannt hat.
@@ -149,36 +165,29 @@ if (!isset($tld)) {
           <p class="grey-text text-lighten-4">
             <strong>OFFEN</strong>: Der Quellcode der verwendeten <a target="_blank" href="https://github.com/evo42/number26-api">Number26 JavaScript API</a> und der gesamten <a target="_blank" href="https://github.com/evo42/willzahlen"><?php echo $tld ?> Applikation</a> ist als Open Source Software veröffentlicht. Einfach mal reinlesen oder auf deinem eigenen Server installieren.
           </p>
-          
-          <br />
+
           <p class="grey-text text-lighten-4">
             Bei Fragen sende eine Nachricht an <a target="_blank" href="mailto:rene.kapusta@gmail.com">rene.kapusta@gmail.com</a> oder ruf' einfach an: <a  href="callto:+436605083280">+43 660 5083280</a> &mdash; <a target="_blank" href="https://twitter.com/rene_kapusta">Stalken</a> ist auch erlaubt.
-        </p>
-        <p class="grey-text text-lighten-4">
-            <br /><br />
-            This Non-Commerical project was made with &#9829; and coffein* <br /><br />@ <a target="_blank" href="http://www.diebox.info">dieBOX &mdash; coworkingspace</a> &mdash; Birkengasse 53, 3100 St. Pölten.<br /><br />
-            *) <a target="_blank" href="https://www.facebook.com/FelixKaffee">Felix Kaffee</a> &amp; <a target="_blank" href="https://www.facebook.com/baernstein.dein.schluck">Bärnstein</a>
           </p>
         </div>
-
+      </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-       SMART SEPA PAYMENT ™ | <a href="https://github.com/evo42/willzahlen">Open Source Software</a> | <a href="https://twitter.com/rene_kapusta">© Rene Kapusta</a>
+       BANKpay+ ™ | K42 Ventures OÜ 🇪🇺 <a href="https://github.com/evo42/willzahlen">Open Source Software</a> <a href="https://LinkedIn.com/in/renekapusta/">@rene_kapusta</a>
       </div>
     </div>
   </footer>
 
-
   <script src="/js/jquery.min.js"></script>
   <!-- script src="/js/zepto.min.js"></script>
   <script src="/js/deferred.js"></script -->
+  <script src="/js/iban.js"></script>
   <script src="/js/drops.js"></script>
   <script src="/js/favico.js"></script>
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
 
-  <script src="//static.getclicky.com/js" type="text/javascript"></script>
-  <script type="text/javascript">try{ clicky.init(100873271); }catch(e){}</script>
+  <!-- script src="https://assets.what3words.com/sdk/v3/what3words.js?key=NZ49V740"></script -->
   </body>
 </html>
